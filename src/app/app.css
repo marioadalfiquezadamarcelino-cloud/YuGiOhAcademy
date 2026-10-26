@@ -1,0 +1,64 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: '#10131C';
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 5%;
+    background: #202637;
+    border-bottom: 1px solid  #394154;
+}
+
+.logo{
+    color: #D4AF37;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a{
+    color: #C2C8D5;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a.activo{
+    color:#D4AF37;
+}
+
+.login-link {
+    border: 1px solid #D4AF37;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+main{
+    padding: 24px 5%;
+}
+
+@media (max-width: 700px){
+    .navbar{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    
+    nav{
+        gap: 14px;
+    }
+}
