@@ -15,6 +15,7 @@ export const routes: Routes = [
 {path: "", redirectTo: 'inicio', pathMatch: 'full'},
 {path: 'inicio', component: Inicio},
 {path: 'catalogo', component: Catalogo},
+{path:'carta/:id', component:DetalleCarta},
 {path: 'detalle-carta', component: DetalleCarta},
 {path: 'estrategia', component:Estrategias},
 {path: 'login', component:Login},

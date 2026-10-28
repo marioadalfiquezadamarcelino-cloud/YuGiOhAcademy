@@ -44,7 +44,11 @@ export class Catalogo {
       nombre: 'Ash Blossom & Joyous Spring',
       tipo: 'Monstruo',
       descripcion:
-        'Una carta muy conocida por su capacidad para interrumpir determinados efectos.',
+        "Cuando se activa una carta o efecto que incluya alguno de los siguientes efectos (Efecto Rápido): puedes descartar esta carta; niega ese efecto."+
+    "● Añadir una carta del Deck a la mano."+
+    "● Invocar de forma especial desde el Deck."+
+    "● Enviar una carta del Deck al Cementerio."+
+    "Solo puedes usar este efecto de Ash Blossom & Joyous Spring una vez por turno.",
       imagen: '/images/ash-Bloosom.webp'
     },
     {
@@ -52,7 +56,7 @@ export class Catalogo {
       nombre: 'Raigeki',
       tipo: 'Mágica',
       descripcion:
-        'Carta Mágica que destruye los monstruos del adversario en el Campo.',
+        "Destruye todos los monstruos que controla tu oponente.",
       imagen: '/images/raigenki.webp'
     },
     {
@@ -60,8 +64,30 @@ export class Catalogo {
       nombre: 'Mirror Force',
       tipo: 'Trampa',
       descripcion:
-        'Carta Trampa que puede responder a un ataque del adversario.',
+        "Cuando un monstruo del oponente declara un ataque: Destruye todos los monstruos de tu oponente en Posición de Ataque.",
       imagen: '/images/mirror-force.webp'
+    },
+      {
+      id: 6,
+      nombre: 'Angel Del Caos',
+      tipo: 'Monstruo',
+      descripcion:"1 monstruo Cantante + 1 o más monstruos no Cantantes de atributo LUZ u OSCURIDAD Para la Invocación por Sincronía de esta carta,"+
+      "puedes tratar a 1 monstruo de LUZ u OSCURIDAD que controles como un Cantante.Si esta carta es Invocada de Modo Especial: puedes seleccionar 1 carta en el campo;"+
+      "destiérrala.Esta carta obtiene estos efectos en función de los Atributos originales de los materiales utilizados para su Invocación por Sincronía."+
+      "● LUZ: Los monstruos Sincro que controlas no se ven afectados por los efectos de monstruos activados por tu oponente."+
+      "● OSCURIDAD: Los monstruos que controlas no pueden ser destruidos en batalla",
+      imagen: '/images/angel_caos.webp'
+    },
+      {
+      id: 7,
+      nombre:'Varudras, el portador definitivo del fin de los tiempos',
+      tipo: 'Monstruo',
+      descripcion:"2 o más monstruos de Nivel 10"+
+"Cuando tu adversario activa una carta o un efecto (Efecto Rápido): puedes desacoplar 1 material de esta carta; niega la activación, después puedes desacoplar 1 material de esta carta y"+
+", a continuación, destruir 1 carta en el campo.Al comienzo del Paso de Daño, si esta carta ataca mientras tiene material: puedes destruir 1 carta en el campo."+
+"Si esta carta, que fue Invocada por Xyz, es destruida: puedes destruir 1 carta en el campo."+
+"Solo puedes usar cada efecto de Varudras, el Portador Final del Fin de los Tiempos una vez por turno.",
+      imagen: '/images/varudra.webp'
     }
   ];
 
