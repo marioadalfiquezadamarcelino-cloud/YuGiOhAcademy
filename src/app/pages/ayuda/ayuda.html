@@ -1,0 +1,97 @@
+
+<section class="ayuda">
+  <header class="cabecera">
+    <p class="etiqueta">ESTAMOS AQUÍ PARA AYUDARTE</p>
+    <h1>Ayuda y Perfil</h1>
+    <p>
+      Encuentra respuestas, consulta las secciones de la academia
+      y continúa aprendiendo sobre Yu-Gi-Oh!
+    </p>
+  </header>
+
+  <section class="perfil">
+    <div class="avatar">Y</div>
+
+    <div class="perfil-info">
+      <h2>Tu espacio de duelista</h2>
+      <p>
+        Explora la academia y descubre los recursos disponibles
+        para mejorar tus conocimientos.
+      </p>
+    </div>
+
+    <a routerLink="/login" class="boton boton-secundario">
+      Iniciar sesión
+    </a>
+  </section>
+
+  <section class="accesos">
+    <h2>Explora la academia</h2>
+
+    <div class="accesos-grid">
+      <a routerLink="/catalogo" class="acceso">
+        <span class="acceso-icono">🃏</span>
+        <h3>Catálogo</h3>
+        <p>Consulta las cartas disponibles.</p>
+        <span class="enlace">Explorar →</span>
+      </a>
+
+      <a routerLink="/guias" class="acceso">
+        <span class="acceso-icono">📚</span>
+        <h3>Guías</h3>
+        <p>Repasa reglas e invocaciones.</p>
+        <span class="enlace">Aprender →</span>
+      </a>
+
+      <a routerLink="/estrategias" class="acceso">
+        <span class="acceso-icono">⚔️</span>
+        <h3>Estrategias</h3>
+        <p>Descubre OTK, FTK y Handtraps.</p>
+        <span class="enlace">Descubrir →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="preguntas">
+    <div class="seccion-titulo">
+      <p class="etiqueta">PREGUNTAS FRECUENTES</p>
+      <h2>¿En qué podemos ayudarte?</h2>
+      <p>Selecciona una pregunta para consultar su respuesta.</p>
+    </div>
+
+    <div class="lista-preguntas">
+      @for (item of preguntas; track item.pregunta; let i = $index) {
+        <article class="pregunta">
+          <button
+            type="button"
+            class="pregunta-boton"
+            [attr.aria-expanded]="preguntaAbierta === i"
+            (click)="alternarPregunta(i)"
+          >
+            <span>{{ item.pregunta }}</span>
+            <span class="flecha">
+              {{ preguntaAbierta === i ? '−' : '+' }}
+            </span>
+          </button>
+
+          @if (preguntaAbierta === i) {
+            <div class="respuesta">
+              <p>{{ item.respuesta }}</p>
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </section>
+
+  <footer class="nota">
+    <h2>¿Quieres seguir aprendiendo?</h2>
+    <p>
+      Visita las guías y las estrategias para ampliar tus conocimientos
+      y preparar mejor tus próximos duelos.
+    </p>
+    <a routerLink="/guias" class="boton boton-principal">
+      Consultar las guías
+    </a>
+  </footer>
+</section>
