@@ -1,1 +1,92 @@
-<p>estrategias works!</p>
+<section class="estrategias">
+    <header class="cabecera">
+        <p>PLANIFICA TU PROXIMA JUGADA</p>
+        <h1> estrategias de Yu-Gi-Oh!</h1>
+
+        <p class="descripcion">
+            Descubre distintas formas de jugar, aprende a interrumpir las combos
+            del adversario y elige la estrategias adecuada para tu Deck.
+        </p>
+    </header>
+
+    <section class="introduccion">
+        <div>
+            <span class="icono">⚔</span>
+            <h2>Piensa antes de jugar</h2>
+            <p>
+                Una buena estrategias no consiste únicamente en atacar.
+                Tambien importa administrar tus recursos, anticipar a las respuestas
+                y reconocer el mometo adecuando para actuar.
+            </p>
+        </div>
+    </section>
+
+    <section class="zona-fitros">
+        <div class="filtro">
+            <label for="categoria">Filtar estrategias</label>
+
+            <select
+                id="categoria"
+                [value]="categoriaSeleccionada"
+                (change)="cambiarCategoria($event)"
+                >
+                @for(categoria of categoria; track categoria){
+                    <option [value]="categoria">{{categoria}}</option>
+                
+            </select>
+        </div>
+        <p class="contador"> 
+            {{estrategiasFiltradas.length}}
+            estrategias(s) encontrada(s)
+        </p>
+    </section>
+
+    <section class="lista-esrategias">
+        <article class="tarjeta">
+            <div class="tarjeta-superior">
+                <span
+                class="categoria"
+                [class.otk]="estrategia.categoria === 'OTK'"
+                [class.ftk]="estrategia.categoria === 'FTK'"
+                [class.handtrap]="estrategia.categoria === 'Handtrap'"
+                [class.control]="estrategia.categoria === 'Control'"
+                > {{estrategia.categoria}} </span>
+                <span class="dificultad">{{estrategia.dificultad}}</span>
+            </div>
+            <h2>{{ estrategia.nombre}}</h2>
+            <p class="resumen">{{ estrategia.resumen}}</p>
+
+            <details>
+                <summary>Ver cuándo utilizarlas</summary>
+
+                <div class="detalle">
+                    <h3>¿Cuándo conviene utilizarla?</h3>
+                    <p>{{estrategia.cuandoUsarla}}</p>
+                    <h3>Ventajas</h3>
+                    <ul>
+                        @for(ventajas of estrategia.ventajas; track ventaja){
+                            <li>{{ventaja}}</li>
+                        }
+                    </ul>
+                    <h3>Aspectos que debe tener en cuenta</h3>
+                    <p>{{estrategia.precauciones}}</p>
+                </div>
+            </details>
+        </article>
+    } @empty {
+        <div class="sin-resultados">
+            <h2>No hay estrategia disponibles</h2>
+            <p>Selecciona otra categoria para ver más resultados.</p>
+        </div>
+    }
+    </section>
+
+    <footer class="nota">
+        <h2>Recuerda</h2>
+        <p>
+            Los efectos, las condiciones de activación y las retricciones de las
+            cartas son importantes. consuta siempre el texto de cada carta y las 
+            reglas oficiales vigentes.
+        </p>
+    </footer>
+</section>
