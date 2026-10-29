@@ -1,1 +1,124 @@
-<p>registro works!</p>
+
+<section class="registro">
+  <div class="registro-card">
+
+    <div class="logo">
+      <span>YU-GI-OH!</span>
+      <p>ACADEMY</p>
+    </div>
+
+    <header class="cabecera">
+      <h1>Crear una cuenta</h1>
+      <p>Únete a nuestra academia y mejora tus conocimientos.</p>
+    </header>
+
+    <form (ngSubmit)="registrarUsuario()">
+
+      <div class="campo">
+        <label for="nombre">Nombre de usuario</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="nombre"
+          placeholder="Introduce tu nombre"
+          autocomplete="username"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          [(ngModel)]="correo"
+          placeholder="ejemplo@correo.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="contrasena">Contraseña</label>
+
+        <div class="campo-contrasena">
+          <input
+            [type]="mostrarContrasena ? 'text' : 'password'"
+            id="contrasena"
+            name="contrasena"
+            [(ngModel)]="contrasena"
+            placeholder="Mínimo 8 caracteres"
+            autocomplete="new-password"
+            required
+          />
+
+          <button
+            type="button"
+            class="boton-ojo"
+            (click)="alternarContrasena()"
+          >
+            {{ mostrarContrasena ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
+
+        <p class="ayuda">
+          Usa al menos 8 caracteres, una mayúscula,
+          una minúscula y un número.
+        </p>
+      </div>
+
+      <div class="campo">
+        <label for="repetirContrasena">Confirmar contraseña</label>
+        <input
+          [type]="mostrarContrasena ? 'text' : 'password'"
+          id="repetirContrasena"
+          name="repetirContrasena"
+          [(ngModel)]="repetirContrasena"
+          placeholder="Repite tu contraseña"
+          autocomplete="new-password"
+          required
+        />
+      </div>
+
+      <label class="condiciones">
+        <input
+          type="checkbox"
+          name="aceptarCondiciones"
+          [(ngModel)]="aceptarCondiciones"
+        />
+        <span>Acepto las condiciones de uso de la aplicación.</span>
+      </label>
+
+      @if (mensajeError) {
+        <div class="mensaje error" role="alert">
+          {{ mensajeError }}
+        </div>
+      }
+
+      @if (mensajeExito) {
+        <div class="mensaje exito" role="status">
+          {{ mensajeExito }}
+        </div>
+      }
+
+      <button type="submit" class="boton-registro">
+        Crear cuenta
+      </button>
+
+    </form>
+
+    <div class="separador"></div>
+
+    <p class="login-enlace">
+      ¿Ya tienes una cuenta?
+      <a routerLink="/login">Inicia sesión</a>
+    </p>
+
+    <a routerLink="/inicio" class="volver">
+      ← Volver al inicio
+    </a>
+
+  </div>
+</section>

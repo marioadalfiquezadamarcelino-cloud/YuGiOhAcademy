@@ -1,0 +1,212 @@
+
+:host {
+  display: block;
+}
+
+.registro {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.registro-card {
+  width: 100%;
+  max-width: 490px;
+  padding: 35px;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.logo span {
+  color: #d4af37;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.logo p {
+  margin: 5px 0 0;
+  color: #c2c8d5;
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+}
+
+.cabecera {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.cabecera h1 {
+  color: #f5f6fa;
+  font-size: 1.7rem;
+}
+
+.cabecera p {
+  color: #c2c8d5;
+  line-height: 1.6;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.campo label {
+  color: #f5f6fa;
+  font-weight: 700;
+}
+
+.campo input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  color: #f5f6fa;
+  background: #171c29;
+  border: 1px solid #394154;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.campo input:focus {
+  outline: 2px solid #d4af37;
+  border-color: #d4af37;
+}
+
+.campo input::placeholder {
+  color: #929bad;
+}
+
+.campo-contrasena {
+  display: flex;
+  gap: 8px;
+}
+
+.campo-contrasena input {
+  flex: 1;
+}
+
+.boton-ojo {
+  padding: 10px;
+  color: #d4af37;
+  background: transparent;
+  border: 1px solid #394154;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-ojo:hover {
+  background: #30394c;
+}
+
+.ayuda {
+  margin: 0;
+  color: #929bad;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.condiciones {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 22px 0;
+  color: #c2c8d5;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.condiciones input {
+  margin-top: 3px;
+  accent-color: #d4af37;
+}
+
+.boton-registro {
+  width: 100%;
+  padding: 14px;
+  color: #10131c;
+  background: #d4af37;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.boton-registro:hover {
+  background: #f0d477;
+}
+
+.mensaje {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.error {
+  color: #ffc0c0;
+  background: #542b35;
+  border: 1px solid #a94c5b;
+}
+
+.exito {
+  color: #c8f3d5;
+  background: #254b3a;
+  border: 1px solid #478663;
+}
+
+.separador {
+  height: 1px;
+  margin: 25px 0;
+  background: #394154;
+}
+
+.login-enlace {
+  color: #c2c8d5;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.login-enlace a {
+  color: #d4af37;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-enlace a:hover {
+  text-decoration: underline;
+}
+
+.volver {
+  display: block;
+  margin-top: 22px;
+  color: #c2c8d5;
+  text-align: center;
+  text-decoration: none;
+}
+
+.volver:hover {
+  color: #d4af37;
+}
+
+@media (max-width: 480px) {
+  .registro {
+    padding: 25px 12px;
+  }
+
+  .registro-card {
+    padding: 25px 20px;
+  }
+}
