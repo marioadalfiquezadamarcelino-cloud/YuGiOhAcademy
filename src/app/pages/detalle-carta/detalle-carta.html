@@ -1,0 +1,72 @@
+
+<section class="detalle">
+
+  @if (carta; as cartaActual) {
+    <a routerLink="/catalogo" class="volver">
+      ← Volver al catálogo
+    </a>
+
+    <article class="ficha">
+
+      <div class="ficha-imagen">
+        <img
+          [src]="cartaActual.imagen"
+          [alt]="'Carta ' + cartaActual.nombre"
+        >
+      </div>
+
+      <div class="ficha-contenido">
+        <p class="etiqueta">DETALLE DE CARTA</p>
+
+        <h1>{{ cartaActual.nombre }}</h1>
+
+        <span class="tipo">{{ cartaActual.tipo }}</span>
+
+        <p class="descripcion">
+          {{ cartaActual.descripcion }}
+        </p>
+
+        <div class="estadisticas">
+          <div class="estadistica">
+            <span>Atributo</span>
+            <strong>{{ cartaActual.atributo }}</strong>
+          </div>
+
+          <div class="estadistica">
+            <span>Nivel</span>
+            <strong>{{ cartaActual.nivel }}</strong>
+          </div>
+
+          <div class="estadistica">
+            <span>ATK</span>
+            <strong>{{ cartaActual.ataque }}</strong>
+          </div>
+
+          <div class="estadistica">
+            <span>DEF</span>
+            <strong>{{ cartaActual.defensa }}</strong>
+          </div>
+        </div>
+
+        <p class="aviso">
+          Consulta las reglas y el texto oficial de la carta
+          para conocer sus condiciones y efectos exactos.
+        </p>
+
+        <a routerLink="/catalogo" class="boton">
+          Seguir explorando
+        </a>
+      </div>
+
+    </article>
+  } @else {
+    <div class="no-encontrada">
+      <h1>Carta no encontrada</h1>
+      <p>No tenemos información de esta carta en esta versión.</p>
+      <a routerLink="/catalogo" class="boton">
+        Volver al catálogo
+      </a>
+    </div>
+  }
+
+</section>

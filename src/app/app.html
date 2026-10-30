@@ -1,0 +1,23 @@
+
+<header class="navbar">
+  <a class="logo" routerLink="/inicio">Yu-Gi-Oh! Academy</a>
+
+  <nav>
+    <a routerLink="/inicio" routerLinkActive="activo"
+       [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+
+    <a routerLink="/catalogo" routerLinkActive="activo">Catálogo</a>
+    <a routerLink="/guias" routerLinkActive="activo">Guías</a>
+    <a routerLink="/estrategias" routerLinkActive="activo">Estrategias</a>
+    <a routerLink="/ayuda" routerLinkActive="activo">Ayuda</a>
+    <a class="login-link" routerLink="/login">Iniciar sesión</a>
+
+    <button class="theme-button" (click)="cambiarTema()">
+      {{ modoOscuro ? '☀️ Modo claro' : '🌙 Modo oscuro' }}
+    </button>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,65 @@
+
+<section class="guias">
+
+  <header class="cabecera">
+    <p class="etiqueta">APRENDE A JUGAR</p>
+    <h1>Guías de Yu-Gi-Oh!</h1>
+    <p>
+      Aprende las reglas, comprende las mecánicas y descubre cómo se
+      desarrolla un duelo.
+    </p>
+  </header>
+
+  <section class="filtro">
+    <label for="categoria">Filtrar por categoría</label>
+
+    <select
+      id="categoria"
+      [value]="categoriaSeleccionada"
+      (change)="cambiarCategoria($event)"
+    >
+      @for (categoria of categorias; track categoria) {
+        <option [value]="categoria">{{ categoria }}</option>
+      }
+    </select>
+
+    <p class="contador">
+      Guías disponibles: {{ guiasFiltradas.length }}
+    </p>
+  </section>
+
+  <section class="lista-guias">
+    @for (guia of guiasFiltradas; track guia.id) {
+      <article class="guia">
+        <span class="categoria">{{ guia.categoria }}</span>
+
+        <h2>{{ guia.titulo }}</h2>
+
+        <p class="resumen">{{ guia.resumen }}</p>
+
+        <details>
+          <summary>Leer guía completa</summary>
+
+          <div class="contenido">
+            @for (parrafo of guia.contenido; track parrafo) {
+              <p>{{ parrafo }}</p>
+            }
+          </div>
+        </details>
+      </article>
+    } @empty {
+      <div class="sin-resultados">
+        <h2>No hay guías en esta categoría</h2>
+        <p>Selecciona otra categoría para continuar.</p>
+      </div>
+    }
+  </section>
+
+  <footer class="nota">
+    <p>
+      Estas guías son material educativo. Consulta las reglas oficiales
+      para verificar los procedimientos y las excepciones de cada carta.
+    </p>
+  </footer>
+
+</section>
