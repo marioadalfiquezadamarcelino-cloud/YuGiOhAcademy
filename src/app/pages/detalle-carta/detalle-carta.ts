@@ -65,6 +65,19 @@ export class DetalleCarta {
     "Solo puedes usar este efecto de Ash Blossom & Joyous Spring una vez por turno.",
       imagen: '/images/ash-Bloosom.webp'
     },
+  
+    {
+      id: 4,
+      nombre: 'Raigenki',
+      tipo: 'Magia/Normal',
+      descripcion: "Destruye todos los monstruos que controla tu oponente",
+      imagen: '/images/raigenki.webp',
+      atributo: '',
+      nivel: 0,
+      ataque: 0,
+      defensa: 0
+    },
+
     {
       id: 6,
       nombre: 'Angel Del Caos',
