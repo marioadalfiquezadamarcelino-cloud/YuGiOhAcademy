@@ -1,16 +1,16 @@
 package com.yugiohacademy.api.dto;
 
-public class AuthRespose {
+public class AuthResponse {
    private String mensaje;
    private String token;
    private Long idUsuario;
    private String nombre; 
    private String correo;
 
-   public AuthRespose(){
+   public AuthResponse(){
    }
 
-   public AuthRespose(String mensaje, String token, Long idUsuario, String nombre, String correo) {
+   public AuthResponse(String mensaje, String token, Long idUsuario, String nombre, String correo) {
     this.mensaje = mensaje;
     this.token = token;
     this.idUsuario = idUsuario;
