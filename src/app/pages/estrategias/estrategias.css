@@ -1,0 +1,278 @@
+
+:host {
+  display: block;
+  color: #f5f6fa;
+}
+
+.estrategias {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+.cabecera {
+  max-width: 780px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.etiqueta {
+  color: #d4af37;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.cabecera h1 {
+  margin: 14px 0;
+  color: #d4af37;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+}
+
+.descripcion {
+  color: #c2c8d5;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.introduccion {
+  margin: 30px 0;
+  padding: 28px;
+  background: linear-gradient(135deg, #202637, #171c29);
+  border: 1px solid #394154;
+  border-left: 4px solid #d4af37;
+  border-radius: 14px;
+}
+
+.introduccion h2 {
+  margin: 10px 0;
+  color: #f5f6fa;
+}
+
+.introduccion p {
+  margin-bottom: 0;
+  color: #c2c8d5;
+  line-height: 1.8;
+}
+
+.icono {
+  color: #d4af37;
+  font-size: 1.8rem;
+}
+
+.zona-filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 35px 0 22px;
+}
+
+.filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filtro label {
+  color: #f5f6fa;
+  font-weight: 700;
+}
+
+.filtro select {
+  min-width: 220px;
+  padding: 12px 14px;
+  color: #f5f6fa;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.filtro select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+.contador {
+  color: #c2c8d5;
+  font-size: 0.9rem;
+}
+
+.lista-estrategias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 24px;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 14px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-3px);
+  border-color: #d4af37;
+}
+
+.tarjeta-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.categoria {
+  display: inline-block;
+  padding: 6px 11px;
+  color: #f5f6fa;
+  background: #394154;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.categoria.otk {
+  color: #ffe5a0;
+  background: #55451c;
+}
+
+.categoria.ftk {
+  color: #ffc0c0;
+  background: #542b35;
+}
+
+.categoria.handtrap {
+  color: #c6ddff;
+  background: #263f62;
+}
+
+.categoria.control {
+  color: #c8f3d5;
+  background: #254b3a;
+}
+
+.dificultad {
+  color: #c2c8d5;
+  font-size: 0.8rem;
+}
+
+.tarjeta h2 {
+  margin: 22px 0 12px;
+  color: #d4af37;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.resumen {
+  flex: 1;
+  color: #c2c8d5;
+  line-height: 1.8;
+}
+
+.tarjeta details {
+  margin-top: 16px;
+  border-top: 1px solid #394154;
+}
+
+.tarjeta summary {
+  padding-top: 17px;
+  color: #d4af37;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detalle {
+  padding-top: 12px;
+  color: #c2c8d5;
+  line-height: 1.8;
+}
+
+.detalle h3 {
+  margin: 18px 0 8px;
+  color: #f5f6fa;
+  font-size: 1rem;
+}
+
+.detalle p {
+  margin: 0;
+}
+
+.detalle ul {
+  padding-left: 22px;
+}
+
+.detalle li {
+  margin-bottom: 7px;
+}
+
+.sin-resultados {
+  grid-column: 1 / -1;
+  padding: 35px;
+  text-align: center;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 14px;
+}
+
+.sin-resultados h2 {
+  color: #d4af37;
+}
+
+.sin-resultados p {
+  color: #c2c8d5;
+}
+
+.nota {
+  margin-top: 35px;
+  padding: 22px;
+  background: #171c29;
+  border: 1px solid #394154;
+  border-radius: 12px;
+}
+
+.nota h2 {
+  margin-top: 0;
+  color: #d4af37;
+}
+
+.nota p {
+  margin-bottom: 0;
+  color: #c2c8d5;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .estrategias {
+    padding-top: 28px;
+  }
+
+  .lista-estrategias {
+    grid-template-columns: 1fr;
+  }
+
+  .zona-filtros {
+    align-items: stretch;
+  }
+
+  .filtro,
+  .filtro select {
+    width: 100%;
+  }
+
+  .introduccion,
+  .tarjeta {
+    padding: 20px;
+  }
+}

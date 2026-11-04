@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Variables del tema oscuro */
+body {
+  --fondo: #10131C;
+  --navbar: #202637;
+  --texto: #F5F6FA;
+  --texto-secundario: #C2C8D5;
+  --borde: #394154;
+
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Variables del tema claro */
+body.modo-claro {
+  --fondo: #F5F6FA;
+  --navbar: #FFFFFF;
+  --texto: #202637;
+  --texto-secundario: #50596B;
+  --borde: #D5D9E2;
+}

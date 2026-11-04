@@ -1,0 +1,81 @@
+
+<section class="catalogo">
+
+  <header class="cabecera-catalogo">
+    <p class="etiqueta">BIBLIOTECA DE CARTAS</p>
+    <h1>Catálogo de Yu-Gi-Oh!</h1>
+    <p>
+      Explora cartas, consulta sus características y descubre nuevas
+      posibilidades para tus estrategias.
+    </p>
+  </header>
+
+  <section class="busqueda">
+    <label for="buscador">Buscar una carta</label>
+
+    <input
+      id="buscador"
+      type="search"
+      placeholder="Escribe el nombre de una carta..."
+      [value]="busqueda"
+      (input)="cambiarBusqueda($event)"
+    >
+
+    <label for="filtroTipo">Tipo de carta</label>
+
+    <select
+      id="filtroTipo"
+      [value]="tipoSeleccionado"
+      (change)="cambiarTipo($event)"
+    >
+      <option value="Todas">Todas las cartas</option>
+      <option value="Monstruo">Monstruos</option>
+      <option value="Mágica">Mágicas</option>
+      <option value="Trampa">Trampas</option>
+    </select>
+
+    <p class="contador">
+      Cartas encontradas: {{ cartasFiltradas.length }}
+    </p>
+  </section>
+
+  <section class="rejilla-cartas">
+
+    @for (carta of cartasFiltradas; track carta.id) {
+      <article class="carta">
+
+        <div class="imagen-carta">
+          <img
+            [src]="carta.imagen"
+            [alt]="'Carta ' + carta.nombre"
+            loading="lazy"
+            (error)="imagenNoDisponible($event)"
+          >
+        </div>
+
+        <div class="contenido-carta">
+          <span class="tipo-carta">{{ carta.tipo }}</span>
+
+          <h2>{{ carta.nombre }}</h2>
+
+          <p>{{ carta.descripcion }}</p>
+
+          <a
+            class="boton-detalle"
+            [routerLink]="['/carta', carta.id]"
+          >
+            Ver detalles
+          </a>
+        </div>
+
+      </article>
+    } @empty {
+      <div class="sin-resultados">
+        <h2>No se encontraron cartas</h2>
+        <p>Prueba con otro nombre o selecciona otro tipo de carta.</p>
+      </div>
+    }
+
+  </section>
+
+</section>

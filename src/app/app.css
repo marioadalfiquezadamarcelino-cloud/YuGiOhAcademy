@@ -1,0 +1,80 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 5%;
+  background: var(--navbar);
+  border-bottom: 1px solid var(--borde);
+}
+
+.logo {
+  color: #D4AF37;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--texto-secundario);
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a.activo {
+  color: #D4AF37;
+}
+
+.login-link {
+  border: 1px solid #D4AF37;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.theme-button {
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid #D4AF37;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.theme-button:hover {
+  background: #D4AF37;
+  color: #10131C;
+}
+
+main {
+  padding: 24px 5%;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    gap: 14px;
+  }
+}

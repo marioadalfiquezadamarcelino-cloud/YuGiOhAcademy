@@ -1,0 +1,176 @@
+
+:host {
+  display: block;
+  color: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.guias {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cabecera {
+  padding: 35px 0;
+}
+
+.etiqueta {
+  color: #D4AF37;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.cabecera h1 {
+  margin: 12px 0;
+  font-size: clamp(30px, 4vw, 42px);
+}
+
+.cabecera > p:last-child {
+  max-width: 700px;
+  color: #C2C8D5;
+  line-height: 1.8;
+}
+
+.filtro {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 28px;
+  padding: 22px;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 12px;
+}
+
+.filtro label {
+  font-weight: bold;
+}
+
+.filtro select {
+  width: 100%;
+  padding: 13px;
+  background: #10131C;
+  border: 1px solid #394154;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font: inherit;
+}
+
+.filtro select:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 3px;
+}
+
+.contador {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #C2C8D5;
+  font-size: 14px;
+}
+
+.lista-guias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.guia {
+  padding: 24px;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 12px;
+}
+
+.guia:hover {
+  border-color: #D4AF37;
+}
+
+.categoria {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid #D4AF37;
+  border-radius: 20px;
+  color: #D4AF37;
+  font-size: 12px;
+}
+
+.guia h2 {
+  margin: 18px 0 10px;
+  font-size: 21px;
+}
+
+.resumen {
+  color: #C2C8D5;
+  line-height: 1.7;
+}
+
+.guia details {
+  margin-top: 20px;
+  border-top: 1px solid #394154;
+  padding-top: 16px;
+}
+
+.guia summary {
+  color: #D4AF37;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.guia summary:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 4px;
+}
+
+.contenido {
+  padding-top: 12px;
+}
+
+.contenido p {
+  color: #C2C8D5;
+  line-height: 1.8;
+}
+
+.sin-resultados {
+  grid-column: 1 / -1;
+  padding: 30px;
+  background: #202637;
+  border: 1px solid #394154;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.sin-resultados p,
+.nota p {
+  color: #C2C8D5;
+  line-height: 1.7;
+}
+
+.nota {
+  margin-top: 30px;
+  padding: 20px;
+  border-left: 3px solid #D4AF37;
+  background: #202637;
+}
+
+@media (max-width: 700px) {
+  .lista-guias {
+    grid-template-columns: 1fr;
+  }
+
+  .filtro {
+    grid-template-columns: 1fr;
+  }
+
+  .contador {
+    grid-column: auto;
+  }
+
+  .guia {
+    padding: 20px;
+  }
+}

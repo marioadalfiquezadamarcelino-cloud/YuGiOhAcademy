@@ -1,0 +1,86 @@
+
+<section class="login">
+  <div class="login-card">
+
+    <div class="logo">
+      <span>YU-GI-OH!</span>
+      <p>ACADEMY</p>
+    </div>
+
+    <header class="cabecera">
+      <h1>Bienvenido de nuevo</h1>
+      <p>Inicia sesión para continuar tu aventura.</p>
+    </header>
+
+    <form (ngSubmit)="iniciarSesion()" #formulario="ngForm">
+
+      <div class="campo">
+        <label for="correo">Correo electrónico</label>
+
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          [(ngModel)]="correo"
+          placeholder="ejemplo@correo.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="contrasena">Contraseña</label>
+
+        <div class="campo-contrasena">
+          <input
+            [type]="mostrarContrasena ? 'text' : 'password'"
+            id="contrasena"
+            name="contrasena"
+            [(ngModel)]="contrasena"
+            placeholder="Introduce tu contraseña"
+            autocomplete="current-password"
+            required
+          />
+
+          <button
+            type="button"
+            class="boton-ojo"
+            (click)="alternarContrasena()"
+            [attr.aria-label]="mostrarContrasena ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+          >
+            {{ mostrarContrasena ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
+      </div>
+
+      @if (mensajeError) {
+        <div class="mensaje error" role="alert">
+          {{ mensajeError }}
+        </div>
+      }
+
+      @if (mensajeExito) {
+        <div class="mensaje exito" role="status">
+          {{ mensajeExito }}
+        </div>
+      }
+
+      <button type="submit" class="boton-login">
+        Iniciar sesión
+      </button>
+
+    </form>
+
+    <div class="separador"></div>
+
+    <p class="registro">
+      ¿Todavía no tienes una cuenta?
+      <a routerLink="/registro">Crear cuenta</a>
+    </p>
+
+    <a routerLink="/inicio" class="volver">
+      ← Volver al inicio
+    </a>
+
+  </div>
+</section>
