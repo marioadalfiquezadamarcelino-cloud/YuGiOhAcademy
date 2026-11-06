@@ -22,11 +22,12 @@
   justify-content: space-between;
   gap: 40px;
   padding: 48px;
-  background: #202637;
-  border: 1px solid #394154;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
   border-radius: 16px;
   text-align: left;
   overflow: hidden;
+
 }
 
 .hero-texto {
@@ -44,7 +45,7 @@
 
 .hero h1 {
   margin: 0 0 20px;
-  color: #FFFFFF;
+  color: #D4AF37;
   font-size: clamp(32px, 5vw, 52px);
   line-height: 1.15;
 }
@@ -151,10 +152,10 @@
   display: block;
   min-width: 0;
   padding: 22px;
-  background: #202637;
-  border: 1px solid #394154;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
   border-radius: 12px;
-  color: inherit;
+  color: var(--texto);
   text-align: center;
   text-decoration: none;
   transition:
@@ -166,9 +167,8 @@
 .tarjeta:hover {
   transform: translateY(-4px);
   border-color: #D4AF37;
-  background: #252D40;
+  background: var(--fondo-tarjeta-hover);
 }
-
 .imagen-contenedor {
   display: flex;
   align-items: center;
@@ -189,13 +189,13 @@
 
 .tarjeta h3 {
   margin: 0 0 12px;
-  color: #FFFFFF;
+  color: var(--texto);
   font-size: 19px;
 }
 
 .tarjeta p {
   margin: 0;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   font-size: 14px;
   line-height: 1.7;
 }

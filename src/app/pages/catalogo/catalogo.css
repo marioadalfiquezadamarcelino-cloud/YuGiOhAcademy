@@ -1,7 +1,7 @@
 
 :host {
   display: block;
-  color: #D4AF37;
+  color: var(--texto);
 }
 
 * {
@@ -13,13 +13,14 @@
   margin: 0 auto;
 }
 
+/* CABECERA */
 
 .cabecera-catalogo {
   padding: 38px 0;
 }
 
 .etiqueta {
-  color: #D4AF37;
+  color: var(--color-acento);
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 3px;
@@ -27,15 +28,17 @@
 
 .cabecera-catalogo h1 {
   margin: 12px 0;
+  color: var(--texto);
   font-size: clamp(30px, 4vw, 42px);
 }
 
 .cabecera-catalogo p:last-child {
   max-width: 700px;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   line-height: 1.7;
 }
 
+/* BUSCADOR Y FILTROS */
 
 .busqueda {
   display: grid;
@@ -43,13 +46,14 @@
   gap: 12px 20px;
   margin-bottom: 30px;
   padding: 22px;
-  background: #202637;
-  border: 1px solid #394154;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
   border-radius: 12px;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .busqueda label {
-  color: #FFFFFF;
+  color: var(--texto);
   font-weight: bold;
 }
 
@@ -58,24 +62,31 @@
   width: 100%;
   min-width: 0;
   padding: 13px;
-  background: #10131C;
-  border: 1px solid #394154;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
   border-radius: 8px;
-  color: #FFFFFF;
+  color: var(--texto);
   font: inherit;
+  transition: background 0.3s, color 0.3s;
+}
+
+.busqueda input::placeholder {
+  color: var(--texto-secundario);
 }
 
 .busqueda input:focus,
 .busqueda select:focus {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid var(--color-acento);
   outline-offset: 2px;
 }
 
 .contador {
   grid-column: 1 / -1;
   margin: 4px 0 0;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
 }
+
+/* REJILLA DE CARTAS */
 
 .rejilla-cartas {
   display: grid;
@@ -83,19 +94,27 @@
   gap: 22px;
 }
 
+/* TARJETAS */
+
 .carta {
   min-width: 0;
   overflow: hidden;
-  background: #202637;
-  border: 1px solid #394154;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
   border-radius: 12px;
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    background 0.3s;
 }
 
 .carta:hover {
   transform: translateY(-4px);
-  border-color: #D4AF37;
+  border-color: var(--color-acento);
+  background: var(--fondo-tarjeta-hover);
 }
+
+/* IMÁGENES */
 
 .imagen-carta {
   display: flex;
@@ -103,7 +122,8 @@
   justify-content: center;
   height: 290px;
   padding: 18px;
-  background: #171C29;
+  background: var(--fondo);
+  transition: background 0.3s;
 }
 
 .imagen-carta img {
@@ -112,6 +132,8 @@
   object-fit: contain;
 }
 
+/* INFORMACIÓN DE LAS CARTAS */
+
 .contenido-carta {
   padding: 20px;
 }
@@ -119,50 +141,61 @@
 .tipo-carta {
   display: inline-block;
   padding: 5px 10px;
-  color: #D4AF37;
-  border: 1px solid #D4AF37;
+  color: var(--color-acento);
+  border: 1px solid var(--color-acento);
   border-radius: 20px;
   font-size: 12px;
 }
 
 .contenido-carta h2 {
   margin: 14px 0 10px;
+  color: var(--texto);
   font-size: 19px;
 }
 
 .contenido-carta p {
   min-height: 72px;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   font-size: 14px;
   line-height: 1.7;
 }
+
+/* BOTÓN DETALLES */
 
 .boton-detalle {
   display: inline-block;
   margin-top: 8px;
   padding: 11px 16px;
-  background: #D4AF37;
+  background: var(--color-acento);
   border-radius: 7px;
-  color: #10131C;
+  color: var(--texto-boton);
   font-weight: bold;
   text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .boton-detalle:hover {
-  background: #FFFFFF;
+  background: var(--texto);
+  color: var(--fondo);
 }
+
+/* SIN RESULTADOS */
 
 .sin-resultados {
   grid-column: 1 / -1;
   padding: 40px 20px;
-  background: #202637;
-  border: 1px solid #394154;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
   border-radius: 12px;
   text-align: center;
 }
 
+.sin-resultados h2 {
+  color: var(--texto);
+}
+
 .sin-resultados p {
-  color: #C2C8D5;
+  color: var(--texto-secundario);
 }
 
 /* TABLET */

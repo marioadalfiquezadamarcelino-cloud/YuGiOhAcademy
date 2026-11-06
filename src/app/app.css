@@ -5,7 +5,10 @@
   background: var(--fondo);
   color: var(--texto);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
+
+/* BARRA DE NAVEGACIÓN */
 
 .navbar {
   display: flex;
@@ -15,15 +18,20 @@
   padding: 20px 5%;
   background: var(--navbar);
   border-bottom: 1px solid var(--borde);
+  transition: background 0.3s, border-color 0.3s;
 }
 
+/* LOGOTIPO */
+
 .logo {
-  color: #D4AF37;
+  color: var(--color-acento);
   font-size: 22px;
   font-weight: bold;
   text-decoration: none;
   white-space: nowrap;
 }
+
+/* ENLACES */
 
 nav {
   display: flex;
@@ -35,23 +43,28 @@ nav {
 nav a {
   color: var(--texto-secundario);
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 nav a:hover,
 nav a.activo {
-  color: #D4AF37;
+  color: var(--color-acento);
 }
 
+/* BOTÓN LOGIN */
+
 .login-link {
-  border: 1px solid #D4AF37;
+  border: 1px solid var(--color-acento);
   padding: 10px 14px;
   border-radius: 8px;
 }
 
+/* BOTÓN CAMBIAR TEMA */
+
 .theme-button {
   background: transparent;
   color: var(--texto);
-  border: 1px solid #D4AF37;
+  border: 1px solid var(--color-acento);
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
@@ -60,13 +73,24 @@ nav a.activo {
 }
 
 .theme-button:hover {
-  background: #D4AF37;
-  color: #10131C;
+  background: var(--color-acento);
+  color: var(--texto-boton);
 }
+
+.theme-button:focus-visible,
+nav a:focus-visible,
+.logo:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 4px;
+}
+
+/* CONTENIDO PRINCIPAL */
 
 main {
   padding: 24px 5%;
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 700px) {
   .navbar {

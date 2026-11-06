@@ -7,6 +7,10 @@ body {
   --texto: #F5F6FA;
   --texto-secundario: #C2C8D5;
   --borde: #394154;
+  --fondo-tarjeta: #202637;
+  --fondo-tarjeta-hover: #252D40;
+  --color-acento: #D4AF37;
+  --texto-boton: #10131C;
 
   margin: 0;
   background: var(--fondo);
@@ -21,4 +25,9 @@ body.modo-claro {
   --texto: #202637;
   --texto-secundario: #50596B;
   --borde: #D5D9E2;
+  --fondo-tarjeta: #FFFFFF;
+  --fondo-tarjeta-hover: #F1F3F7;
+  --color-acento: #A47B00;
+  --texto-boton: #FFFFFF;
 }
+
