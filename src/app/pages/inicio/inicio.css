@@ -1,7 +1,6 @@
-
 :host {
   display: block;
-  color: #FFFFFF;
+  color: var(--texto);
 }
 
 * {
@@ -27,7 +26,7 @@
   border-radius: 16px;
   text-align: left;
   overflow: hidden;
-
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .hero-texto {
@@ -37,7 +36,7 @@
 
 .etiqueta {
   margin: 0 0 16px;
-  color: #D4AF37;
+  color: var(--color-acento);
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 3px;
@@ -45,7 +44,7 @@
 
 .hero h1 {
   margin: 0 0 20px;
-  color: #D4AF37;
+  color: var(--color-acento);
   font-size: clamp(32px, 5vw, 52px);
   line-height: 1.15;
 }
@@ -53,7 +52,7 @@
 .descripcion {
   max-width: 620px;
   margin: 0;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   font-size: 17px;
   line-height: 1.8;
 }
@@ -70,7 +69,7 @@
 .boton {
   display: inline-block;
   padding: 14px 20px;
-  border: 1px solid #D4AF37;
+  border: 1px solid var(--color-acento);
   border-radius: 8px;
   font-size: 14px;
   font-weight: bold;
@@ -83,26 +82,32 @@
 }
 
 .boton-principal {
-  background: #D4AF37;
-  color: #10131C;
+  background: var(--color-acento);
+  color: var(--texto-boton);
 }
 
 .boton-secundario {
   background: transparent;
-  color: #D4AF37;
+  color: var(--color-acento);
 }
 
 .boton:hover {
-  background: #FFFFFF;
-  border-color: #FFFFFF;
-  color: #10131C;
+  background: var(--fondo-tarjeta-hover);
+  border-color: var(--color-acento);
+  color: var(--texto);
   transform: translateY(-2px);
+}
+
+.boton-principal:hover {
+  background: var(--color-acento);
+  color: var(--texto-boton);
+  filter: brightness(1.1);
 }
 
 .boton:focus-visible,
 .tarjeta:focus-visible,
 .pie-inicio a:focus-visible {
-  outline: 3px solid #D4AF37;
+  outline: 3px solid var(--color-acento);
   outline-offset: 4px;
 }
 
@@ -132,13 +137,13 @@
 
 .seccion h2 {
   margin: 0 0 12px;
-  color: #D4AF37;
+  color: var(--color-acento);
   font-size: 30px;
 }
 
 .introduccion {
   margin: 0 0 28px;
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   line-height: 1.7;
 }
 
@@ -161,14 +166,15 @@
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    background 0.2s ease;
+    background 0.3s ease;
 }
 
 .tarjeta:hover {
   transform: translateY(-4px);
-  border-color: #D4AF37;
+  border-color: var(--color-acento);
   background: var(--fondo-tarjeta-hover);
 }
+
 .imagen-contenedor {
   display: flex;
   align-items: center;
@@ -204,7 +210,7 @@
 
 .imagen-textual {
   min-height: 190px;
-  color: #D4AF37;
+  color: var(--color-acento);
 }
 
 .icono-estrategia {
@@ -217,8 +223,9 @@
   justify-content: center;
   width: 100px;
   height: 100px;
-  border: 3px solid #D4AF37;
+  border: 3px solid var(--color-acento);
   border-radius: 50%;
+  color: var(--color-acento);
   font-size: 64px;
   font-weight: bold;
 }
@@ -231,22 +238,22 @@
   align-items: center;
   gap: 16px;
   padding: 22px 0;
-  border-top: 1px solid #394154;
+  border-top: 1px solid var(--borde);
 }
 
 .pie-inicio p {
   margin: 0;
-  color: #D4AF37;
+  color: var(--color-acento);
   font-weight: bold;
 }
 
 .pie-inicio a {
-  color: #C2C8D5;
+  color: var(--texto-secundario);
   text-decoration: none;
 }
 
 .pie-inicio a:hover {
-  color: #D4AF37;
+  color: var(--color-acento);
 }
 
 /* TABLET */
