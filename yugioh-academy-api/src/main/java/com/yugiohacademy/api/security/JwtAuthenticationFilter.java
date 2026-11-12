@@ -18,57 +18,56 @@ import java.util.Collections;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final JwtService jwtService;
+        private final JwtService jwtService;
 
-    public JwtAuthenticationFilter(JwtService jwtService) {
-        this.jwtService = jwtService;
-    }
-
-    @Override
-    protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain)
-            throws ServletException, IOException {
-
-        // Obtener la cabecera Authorization
-        String authorizationHeader =
-                request.getHeader("Authorization");
-
-        // Comprobar que contiene un token Bearer
-        if (authorizationHeader != null
-                && authorizationHeader.startsWith("Bearer ")) {
-
-            String token = authorizationHeader.substring(7);
-
-            // Comprobar si el token es válido
-            if (jwtService.validarToken(token)
-                    && SecurityContextHolder.getContext()
-                    .getAuthentication() == null) {
-
-                // Obtener el correo del usuario
-                String correo = jwtService.obtenerCorreo(token);
-
-                // Crear la autenticación
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(
-                                correo,
-                                null,
-                                Collections.emptyList()
-                        );
-
-                authentication.setDetails(
-                        new WebAuthenticationDetailsSource()
-                                .buildDetails(request)
-                );
-
-                // Guardar la autenticación en Spring Security
-                SecurityContextHolder.getContext()
-                        .setAuthentication(authentication);
-            }
+        public JwtAuthenticationFilter(JwtService jwtService) {
+                this.jwtService = jwtService;
         }
 
-        // Continuar con la siguiente fase de la petición
-        filterChain.doFilter(request, response);
-    }
+        @Override
+        protected boolean shouldNotFilter(HttpServletRequest request) {
+
+                String ruta = request.getServletPath();
+
+                return ruta.equals("/api/auth/registro")
+                                || ruta.equals("/api/auth/login")
+                                || request.getMethod().equals("OPTIONS");
+        }
+
+        @Override
+        protected void doFilterInternal(
+                        HttpServletRequest request,
+                        HttpServletResponse response,
+                        FilterChain filterChain)
+                        throws ServletException, IOException {
+
+                String authorizationHeader = request.getHeader("Authorization");
+
+                if (authorizationHeader != null
+                                && authorizationHeader.startsWith("Bearer ")) {
+
+                        String token = authorizationHeader.substring(7);
+
+                        if (jwtService.validarToken(token)
+                                        && SecurityContextHolder.getContext()
+                                                        .getAuthentication() == null) {
+
+                                String correo = jwtService.obtenerCorreo(token);
+
+                                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                                                correo,
+                                                null,
+                                                Collections.emptyList());
+
+                                authentication.setDetails(
+                                                new WebAuthenticationDetailsSource()
+                                                                .buildDetails(request));
+
+                                SecurityContextHolder.getContext()
+                                                .setAuthentication(authentication);
+                        }
+                }
+
+                filterChain.doFilter(request, response);
+        }
 }

@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -14,19 +15,17 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    // Clave secreta para firmar los tokens.
-    // En producción debe guardarse en una variable de entorno.
-    private static final String SECRET_KEY =
-            "YuGiOhAcademyClaveSecreta2026SeguraParaJWT123456789";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
     // Duración del token: 24 horas
-    private static final long EXPIRATION_TIME =
-            1000L * 60 * 60 * 24;
+    private static final long EXPIRATION_TIME = 1000L * 60 * 60 * 24;
 
+    // Obtener la clave para firmar los tokens
     private SecretKey getSigningKey() {
+
         return Keys.hmacShaKeyFor(
-                SECRET_KEY.getBytes(StandardCharsets.UTF_8)
-        );
+                secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
     // Generar un token JWT
@@ -35,8 +34,7 @@ public class JwtService {
         Date fechaActual = new Date();
 
         Date fechaExpiracion = new Date(
-                fechaActual.getTime() + EXPIRATION_TIME
-        );
+                fechaActual.getTime() + EXPIRATION_TIME);
 
         return Jwts.builder()
                 .subject(correo)
@@ -54,6 +52,10 @@ public class JwtService {
 
     // Comprobar si el token es válido
     public boolean validarToken(String token) {
+
+        if (token == null || token.isBlank()) {
+            return false;
+        }
 
         try {
             obtenerClaims(token);

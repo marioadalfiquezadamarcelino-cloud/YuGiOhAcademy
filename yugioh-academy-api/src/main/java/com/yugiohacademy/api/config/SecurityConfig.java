@@ -1,7 +1,6 @@
 
 package com.yugiohacademy.api.config;
 
-
 import com.yugiohacademy.api.security.JwtAuthenticationFilter;
 
 import org.springframework.context.annotation.Bean;
@@ -23,12 +22,11 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
-
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfig(
-     JwtAuthenticationFilter jwtAuthenticationFilter) {
-     this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+            JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     @Bean
@@ -41,29 +39,39 @@ public class SecurityConfig {
             throws Exception {
 
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-            .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)
 
-            .sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            )
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST,
-                    "/api/auth/registro",
-                    "/api/auth/login"
-                ).permitAll()
-                .anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth
 
-            )
+                        // Registro e inicio de sesión públicos
+                        .requestMatchers(HttpMethod.POST,
+                                "/api/auth/registro",
+                                "/api/auth/login")
+                        .permitAll()
 
-            // Incorporar el filtro JWT
-            .addFilterBefore(
-                jwtAuthenticationFilter,
-                UsernamePasswordAuthenticationFilter.class
+                        // Consultas públicas
+                        .requestMatchers(HttpMethod.GET,
+                                "/api/cartas/**",
+                                "/api/estrategias/**",
+                                "/api/tipos-cartas/**",
+                                "/api/tipos-invocacion/**",
+                                "/api/reglas/**",
+                                "/api/cartas-estrategias/**",
+                                "/api/cartas-invocaciones/**")
+                        .permitAll()
 
-            );
+                        // El resto requiere autenticación
+                        .anyRequest().authenticated())
+
+                // Filtro de autenticación JWT
+                .addFilterBefore(
+                        jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -73,22 +81,18 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(
-            List.of("http://localhost:4200")
-        );
+        configuration.setAllowedOriginPatterns(
+                List.of("*"));
 
         configuration.setAllowedMethods(
-            List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")
-        );
+                List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
         configuration.setAllowedHeaders(
-            List.of("Authorization", "Content-Type")
-        );
+                List.of("Authorization", "Content-Type"));
 
         configuration.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source =
-            new UrlBasedCorsConfigurationSource();
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         source.registerCorsConfiguration("/**", configuration);
 

@@ -1,3 +1,4 @@
+
 package com.yugiohacademy.api.controller;
 
 import java.util.Map;
@@ -12,34 +13,40 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yugiohacademy.api.entity.Usuario;
 import com.yugiohacademy.api.repository.UsuarioRepository;
 
-@RestController 
-@RequestMapping ("/api/usuarios")
+@RestController
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
-    
-    public final UsuarioRepository usuarioRepository;
 
-    public UsuarioController(UsuarioRepository usuarioRepository){
+    private final UsuarioRepository usuarioRepository;
+
+    public UsuarioController(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
-    @GetMapping ("/perfil")
-    public ResponseEntity<?> obtenerPerfil(Authentication authentication){
-        
-        String correo = authentication.getName();
+    // Obtener el perfil del usuario autenticado
+    @GetMapping("/perfil")
+    public ResponseEntity<?> obtenerPerfil(Authentication authentication) {
 
-        Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
-
-        if (usuario == null || !Boolean.TRUE.equals(usuario.getActivo())){
-
-            return ResponseEntity.
-            status(HttpStatus.UNAUTHORIZED)
-            .body(Map.of("mensaje", "Usuario no encontrado o inactivo. "));
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("mensaje", "Usuario no autenticado."));
         }
 
-        return  ResponseEntity.ok(Map.of(
-            "idUsuario", usuario.getIdUsuario(),
-            "nombre", usuario.getNombre(),
-            "correo", usuario.getCorreo()
-        ));
+        String correo = authentication.getName();
+
+        Usuario usuario = usuarioRepository.findByCorreo(correo)
+                .orElse(null);
+
+        if (usuario == null || !Boolean.TRUE.equals(usuario.getActivo())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of(
+                            "mensaje",
+                            "Usuario no encontrado o inactivo."));
+        }
+
+        return ResponseEntity.ok(Map.of(
+                "idUsuario", usuario.getIdUsuario(),
+                "nombre", usuario.getNombre(),
+                "correo", usuario.getCorreo()));
     }
 }
