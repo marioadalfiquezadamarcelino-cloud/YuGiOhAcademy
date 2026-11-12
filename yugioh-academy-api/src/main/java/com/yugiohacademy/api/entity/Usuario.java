@@ -1,11 +1,13 @@
 package com.yugiohacademy.api.entity;
 
  import jakarta.persistence.*;
- import java.time.LocalDateTime;   
+ import java.time.LocalDateTime;
+
+ import com.fasterxml.jackson.annotation.JsonProperty;   
 
     
 @Entity 
-@Table (name = "Usuario")
+@Table (name = "usuario")
 public class Usuario {
 
 @Id
@@ -16,10 +18,11 @@ private Long idUsuario;
 @Column (name = "nombre", nullable =  false, length = 100)
 private String nombre;
 
-@Column (name =  "correo", nullable = false,length = 150)
+@Column(name = "correo", nullable = false, unique = true, length = 150)
 private String correo;
 
-@Column (name = "contrasena", nullable = false, length = 255)
+@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+@Column(name = "contrasena", nullable = false, length = 255)
 private String contrasena;
 
 @Column (name = "fecha_registro")
