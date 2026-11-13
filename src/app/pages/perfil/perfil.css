@@ -1,0 +1,134 @@
+
+:host {
+  display: block;
+  color: var(--texto);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.perfil {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 42px 20px 60px;
+  color: var(--texto);
+}
+
+/* TARJETA DEL PERFIL */
+.perfil-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 35px;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* LOGO */
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo span {
+  color: var(--color-acento);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo p {
+  margin: 5px 0;
+  color: var(--texto);
+  letter-spacing: 5px;
+}
+
+/* CABECERA */
+.cabecera {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cabecera h1 {
+  margin-bottom: 8px;
+  color: var(--color-acento);
+}
+
+.cabecera p {
+  color: var(--texto-secundario);
+  line-height: 1.7;
+}
+
+/* DATOS DEL USUARIO */
+.datos-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  padding: 16px;
+  background: var(--fondo-tarjeta-hover);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-acento);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.campo p {
+  margin: 0;
+  color: var(--texto);
+  overflow-wrap: anywhere;
+}
+
+/* MENSAJE DE ERROR */
+.mensaje-error {
+  color: #d9534f;
+  text-align: center;
+}
+
+/* BOTÓN VOLVER */
+.volver {
+  display: block;
+  margin-top: 30px;
+  padding: 12px;
+  color: var(--color-acento);
+  border: 1px solid var(--color-acento);
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.volver:hover {
+  color: var(--texto-boton);
+  background: var(--color-acento);
+}
+
+.volver:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .perfil-card {
+    padding: 22px;
+  }
+
+  .logo span {
+    font-size: 24px;
+  }
+}

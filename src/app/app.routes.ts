@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 
 import { Inicio } from './pages/inicio/inicio';
@@ -9,9 +8,12 @@ import { Registro } from './pages/registro/registro';
 import { Guias } from './pages/guias/guias';
 import { Estrategias } from './pages/estrategias/estrategias';
 import { Ayuda } from './pages/ayuda/ayuda';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+
+  // Páginas públicas
   { path: 'inicio', component: Inicio },
   { path: 'catalogo', component: Catalogo },
   { path: 'carta/:id', component: DetalleCarta },
@@ -20,5 +22,14 @@ export const routes: Routes = [
   { path: 'guias', component: Guias },
   { path: 'estrategias', component: Estrategias },
   { path: 'ayuda', component: Ayuda },
+
+  // Página privada de ejemplo
+  {
+    path: 'perfil',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/perfil/perfil').then(m => m.Perfil)
+  },
+
   { path: '**', redirectTo: 'inicio' }
 ];

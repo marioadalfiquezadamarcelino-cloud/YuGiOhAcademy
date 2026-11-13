@@ -1,6 +1,11 @@
-
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  Router,
+  NavigationEnd
+} from '@angular/router';
 
 @Component({
   imports: [RouterOutlet, RouterLinkActive, RouterLink],
@@ -13,6 +18,14 @@ export class App implements OnInit {
 
   modoOscuro = true;
 
+  usuario: {
+    idUsuario: number;
+    nombre: string;
+    correo: string;
+  } | null = null;
+
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     const temaGuardado = localStorage.getItem('tema');
 
@@ -21,6 +34,29 @@ export class App implements OnInit {
     }
 
     this.aplicarTema();
+
+    this.cargarUsuario();
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.cargarUsuario();
+      }
+    });
+  }
+
+  cargarUsuario(): void {
+    const token = localStorage.getItem('token');
+    const usuarioGuardado = localStorage.getItem('usuario');
+
+    if (token && usuarioGuardado) {
+      try {
+        this.usuario = JSON.parse(usuarioGuardado);
+      } catch {
+        this.usuario = null;
+      }
+    } else {
+      this.usuario = null;
+    }
   }
 
   cambiarTema(): void {
@@ -36,5 +72,14 @@ export class App implements OnInit {
 
   aplicarTema(): void {
     document.body.classList.toggle('modo-claro', !this.modoOscuro);
+  }
+
+  cerrarSesion(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+
+    this.usuario = null;
+
+    this.router.navigate(['/inicio']);
   }
 }

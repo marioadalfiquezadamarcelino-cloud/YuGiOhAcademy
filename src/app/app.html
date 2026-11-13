@@ -1,6 +1,16 @@
-
 <header class="navbar">
-  <a class="logo" routerLink="/inicio">Yu-Gi-Oh! Academy</a>
+
+  <div class="marca">
+    <a class="logo" routerLink="/inicio">
+      Yu-Gi-Oh! Academy
+    </a>
+
+    @if (usuario) {
+      <span class="nombre-usuario">
+        {{ usuario.nombre }}
+      </span>
+    }
+  </div>
 
   <nav>
     <a routerLink="/inicio" routerLinkActive="activo"
@@ -10,12 +20,22 @@
     <a routerLink="/guias" routerLinkActive="activo">Guías</a>
     <a routerLink="/estrategias" routerLinkActive="activo">Estrategias</a>
     <a routerLink="/ayuda" routerLinkActive="activo">Ayuda</a>
-    <a class="login-link" routerLink="/login">Iniciar sesión</a>
+
+    @if (usuario) {
+      <button class="logout-button" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    } @else {
+      <a class="login-link" routerLink="/login">
+        Iniciar sesión
+      </a>
+    }
 
     <button class="theme-button" (click)="cambiarTema()">
       {{ modoOscuro ? '☀️ Modo claro' : '🌙 Modo oscuro' }}
     </button>
   </nav>
+
 </header>
 
 <main>

@@ -1,4 +1,3 @@
-
 <section class="registro">
   <div class="registro-card">
 
@@ -103,8 +102,12 @@
         </div>
       }
 
-      <button type="submit" class="boton-registro">
-        Crear cuenta
+      <button
+        type="submit"
+        class="boton-registro"
+        [disabled]="cargando"
+      >
+        {{ cargando ? 'Creando cuenta...' : 'Crear cuenta' }}
       </button>
 
     </form>

@@ -1,7 +1,7 @@
-
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -21,6 +21,9 @@ export class Registro {
 
   mensajeError = '';
   mensajeExito = '';
+  cargando = false;
+
+  constructor(private authService: AuthService) {}
 
   registrarUsuario(): void {
     this.mensajeError = '';
@@ -78,8 +81,36 @@ export class Registro {
       return;
     }
 
-    this.mensajeExito =
-      'Formulario validado correctamente. El registro todavía no se ha guardado.';
+    this.cargando = true;
+
+    this.authService.registrar({
+      nombre: this.nombre.trim(),
+      correo: this.correo.trim(),
+      contrasena: this.contrasena
+    }).subscribe({
+
+      next: (respuesta) => {
+        this.mensajeExito = respuesta.mensaje;
+        this.mensajeError = '';
+
+        this.nombre = '';
+        this.correo = '';
+        this.contrasena = '';
+        this.repetirContrasena = '';
+        this.aceptarCondiciones = false;
+
+        this.cargando = false;
+      },
+
+      error: (error) => {
+        this.mensajeError =
+          error.error?.mensaje ||
+          'No se pudo completar el registro. Inténtalo de nuevo.';
+
+        this.cargando = false;
+      }
+
+    });
   }
 
   alternarContrasena(): void {

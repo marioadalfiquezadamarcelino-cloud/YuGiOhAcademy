@@ -1,0 +1,49 @@
+
+<section class="perfil">
+  <div class="perfil-card">
+
+    <div class="logo">
+      <span>YU-GI-OH!</span>
+      <p>ACADEMY</p>
+    </div>
+
+    <header class="cabecera">
+      <h1>Mi perfil</h1>
+      <p>Información de tu cuenta.</p>
+    </header>
+
+    @if (usuario) {
+
+      <div class="datos-usuario">
+
+        <div class="campo">
+          <label>Nombre de usuario</label>
+          <p>{{ usuario.nombre }}</p>
+        </div>
+
+        <div class="campo">
+          <label>Correo electrónico</label>
+          <p>{{ usuario.correo }}</p>
+        </div>
+
+        <div class="campo">
+          <label>ID de usuario</label>
+          <p>{{ usuario.idUsuario }}</p>
+        </div>
+
+      </div>
+
+    } @else {
+
+      <p class="mensaje-error">
+        No se han podido recuperar los datos del usuario.
+      </p>
+
+    }
+
+    <a routerLink="/inicio" class="volver">
+      ← Volver al inicio
+    </a>
+
+  </div>
+</section>
